@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class player : MonoBehaviour
 {
@@ -11,10 +13,17 @@ public class player : MonoBehaviour
     public int health;
 
     public GameObject projectile;
+
+    public Text sante;
+
+    private string[] cheatCode;
+    private int index;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        cheatCode = new string[] { "t", "e", "n", "t", "a", "c", "u", "l", "e" };
+        index = 1;
     }
 
     // Update is called once per frame
@@ -54,6 +63,22 @@ public class player : MonoBehaviour
             Die();
         }
 
+
+        //code secret
+
+        if (Input.anyKeyDown)
+        {
+            if (Input.GetKeyDown(cheatCode[index]))
+            {
+
+            }
+        }
+
+
+
+        string pv = health.ToString();
+        sante.text = pv;
+
     }
 
     private void Shoot()
@@ -66,10 +91,11 @@ public class player : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
-        new WaitForSeconds(3);
-        Debug.Log("Lol U ded");
+        new WaitForSeconds(5);
+        SceneManager.LoadScene("GameOver");
     }
 
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var YPos = gameObject.transform.position.y;
@@ -105,10 +131,7 @@ public class player : MonoBehaviour
                 break;
 
             case ("Asteroid"):
-                health -= 50;
-                break;
-
-            default:
+                health -= 50;             
                 break;
         }
         
