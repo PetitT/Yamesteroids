@@ -18,12 +18,13 @@ public class player : MonoBehaviour
 
     private string[] cheatCode;
     private int index;
+    public GameObject cheat;
 
     // Start is called before the first frame update
     void Start()
     {
         cheatCode = new string[] { "t", "e", "n", "t", "a", "c", "u", "l", "e" };
-        index = 1;
+        index = 0;
     }
 
     // Update is called once per frame
@@ -70,12 +71,21 @@ public class player : MonoBehaviour
         {
             if (Input.GetKeyDown(cheatCode[index]))
             {
-
+                index++;
+                
+            }
+            else
+            {
+                index = 0;
             }
         }
+            if(index == cheatCode.Length)
+            {
+                GameObject Cthulu = Instantiate(cheat, cheat.transform.position, cheat.transform.rotation);
+                health = 10000;
+            }
 
-
-
+        //update santé
         string pv = health.ToString();
         sante.text = pv;
 
