@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114304112049824212}
   - component: {fileID: 50406643669310240}
   - component: {fileID: 60991509634115726}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BigTentacle
   m_TagString: Tentacule
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f6d8a7ddf2820245979659ad37df896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 0.3
+  projectileSpeed: 25
 --- !u!212 &212526846315229640
 SpriteRenderer:
   m_ObjectHideFlags: 1

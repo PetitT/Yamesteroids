@@ -6,14 +6,17 @@ public class Projectile : MonoBehaviour {
 
     public float projectileSpeed;
 
+    Rigidbody2D body;
+
 	// Use this for initialization
 	void Start () {
-		
+        body = GetComponent<Rigidbody2D>();
+        body.AddForce(transform.up * projectileSpeed, ForceMode2D.Impulse);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.transform.position += transform.up * projectileSpeed;
+
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)

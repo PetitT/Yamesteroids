@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114626178242298348}
   - component: {fileID: 50055408317710488}
   - component: {fileID: 60102483178041228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Asteroid3
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -54,14 +54,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 715651f765bbe44409b5158697f68426, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!60 &60102483178041228
 PolygonCollider2D:
@@ -111,8 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208cbf60c677c78489d01cb337eaaae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidSpeed: 0.07
+  asteroidSpeed: 30000
   upperTier: {fileID: 1546368341325108, guid: 2294116587e253446b9beebbb066fe87, type: 2}
+  counter: {fileID: 0}
 --- !u!212 &212606674811633750
 SpriteRenderer:
   m_ObjectHideFlags: 1

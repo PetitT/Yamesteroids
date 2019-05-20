@@ -5,18 +5,21 @@ using UnityEngine;
 public class BigTentacle : MonoBehaviour {
 
     public float projectileSpeed;
+    Rigidbody2D body;
 
 	// Use this for initialization
 	void Start () {
         var randomRotate = Random.Range(0, 360);
         gameObject.transform.Rotate(0, 0, randomRotate);
+
+        body = GetComponent<Rigidbody2D>();
+        body.AddForce(transform.up * projectileSpeed, ForceMode2D.Impulse);
+
     }
 	
 	// Update is called once per frame
-	void Update () {
-        var randomRotate = Random.Range(0, 360);
-        gameObject.transform.Rotate(0, 0, randomRotate);
-        gameObject.transform.position += transform.up * projectileSpeed;
+	void Update () {        
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

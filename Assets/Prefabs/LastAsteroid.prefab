@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4180385838246988}
   - component: {fileID: 212916703334709106}
+  - component: {fileID: 114178474112322114}
   - component: {fileID: 50054499054831478}
   - component: {fileID: 60434402034405984}
-  - component: {fileID: 114178474112322114}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LastAsteroid
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -58,10 +58,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 715651f765bbe44409b5158697f68426, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!60 &60434402034405984
 PolygonCollider2D:
@@ -109,8 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 208cbf60c677c78489d01cb337eaaae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidSpeed: 0.11
-  upperTier: {fileID: 1977377124604812, guid: c0c90f278e56f6d48b36342a17f5e8d8, type: 2}
+  asteroidSpeed: 20000
+  upperTier: {fileID: 0}
+  sparkle: {fileID: 1977377124604812, guid: c0c90f278e56f6d48b36342a17f5e8d8, type: 2}
 --- !u!212 &212916703334709106
 SpriteRenderer:
   m_ObjectHideFlags: 1

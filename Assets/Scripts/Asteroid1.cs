@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Asteroid1 : MonoBehaviour {
 
     public float asteroidSpeed;
     public GameObject upperTier;
 
-    public GameObject counter;
+    public GameObject sparkle;
 
+    public static int numberOfAsteroids =  1;
+
+    Rigidbody2D body;
 	void Start () {
-
         var randomRotate = Random.Range(0, 360);
-        gameObject.transform.Rotate(0, 0, randomRotate); 
-	}
+        gameObject.transform.Rotate(0, 0, randomRotate);
+        body = GetComponent<Rigidbody2D>();
+        body.AddForce(transform.up * asteroidSpeed * Time.deltaTime);
+    }
 	
 	void Update () {
-        gameObject.transform.position += transform.up * asteroidSpeed;
+ 
     }
 
 
@@ -62,11 +67,27 @@ public class Asteroid1 : MonoBehaviour {
                 var position = gameObject.transform.position;
 
                 Vector3 randomAsteroidPos = new Vector3(randomAsteroidPosX, randomAsteroidPosY);
-               
-                GameObject smallerAsteroid = Instantiate(upperTier, randomAsteroidPos, asteroidRotate);
-                GameObject smallerAsteroid2 = Instantiate(upperTier, randomAsteroidPos, asteroidRotate);
+
+                if (upperTier != null)
+                {
+                    GameObject smallerAsteroid = Instantiate(upperTier, randomAsteroidPos, asteroidRotate);
+                    GameObject smallerAsteroid2 = Instantiate(upperTier, randomAsteroidPos, asteroidRotate);
+                    numberOfAsteroids += 2;
+                }
+                else
+                {
+                    GameObject etoiles = Instantiate(sparkle, transform.position, transform.rotation);
+                }
                 countscore.score += 50;
                 Destroy(gameObject);
+                numberOfAsteroids -= 1;
+
+                if (numberOfAsteroids <= 0)
+                {
+                    SceneManager.LoadScene("Finish");
+                }
+
+                Debug.Log(numberOfAsteroids);
 
                 break;
         }

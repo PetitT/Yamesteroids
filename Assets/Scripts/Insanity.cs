@@ -1,13 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Insanity : MonoBehaviour {
 
     public GameObject projectile;
-
-    private float time = 0.0f;
-    public float interpolationPeriod = 3f;
+    float waitForShot = 0.1f;
+    float timer = 0.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -17,13 +17,21 @@ public class Insanity : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        CountDownAndShoot();
+    }
 
-        if (time >= interpolationPeriod)
+    private void CountDownAndShoot()
+    {
+        timer += Time.deltaTime;
+        if (timer >= waitForShot) 
         {
-            time = time - interpolationPeriod;
-            GameObject missile = Instantiate(projectile, gameObject.transform.position, gameObject.transform.rotation);
-            // execute block of code here
+            Fire();
         }
+    }
+
+    private void Fire()
+    {
+        GameObject missile = Instantiate(projectile, gameObject.transform.position, gameObject.transform.rotation);
+        timer -= waitForShot;
     }
 }

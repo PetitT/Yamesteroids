@@ -6,10 +6,8 @@ using UnityEngine.UI;
 
 public class player : MonoBehaviour
 {
-
-    public float speed;
-    public float rotateSpeed;
-    public float backSpeed;
+    public float rotationForce;
+    public float force;
     public int health;
 
     public GameObject projectile;
@@ -20,37 +18,34 @@ public class player : MonoBehaviour
     private int index;
     public GameObject cheat;
 
+    public GameObject premierAsteroid;
+
+    new Rigidbody2D rigidbody2D;
+
     // Start is called before the first frame update
     void Start()
     {
+        GameObject premier = Instantiate(premierAsteroid, premierAsteroid.transform.position, premierAsteroid.transform.rotation);
         cheatCode = new string[] { "t", "e", "n", "t", "a", "c", "u", "l", "e" };
         index = 0;
+        rigidbody2D = GetComponent<Rigidbody2D>();
     }
+
+    private void FixedUpdate()
+    {
+        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        rigidbody2D.AddRelativeForce(Vector3.up * force * verticalInput * Time.deltaTime);
+        rigidbody2D.AddTorque(horizontalInput * -rotationForce * Time.deltaTime);
+    }
+
+
 
     // Update is called once per frame
     void Update()
-    {
-
-        // déplacements
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.position += transform.up * Time.deltaTime * speed;
-        }
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.position -= transform.up * Time.deltaTime * backSpeed;
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Rotate(0, 0, rotateSpeed);
-        }
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(0, 0, -rotateSpeed);
-        }
+    { 
+        
 
         // tirer
         if (Input.GetKeyDown(KeyCode.Space))
@@ -72,18 +67,19 @@ public class player : MonoBehaviour
             if (Input.GetKeyDown(cheatCode[index]))
             {
                 index++;
-                
+                if (index == cheatCode.Length)
+                {
+                    GameObject Cthulu = Instantiate(cheat, cheat.transform.position, cheat.transform.rotation);
+                    health = 10000;
+                    index = 0;
+                }
             }
             else
             {
                 index = 0;
             }
         }
-            if(index == cheatCode.Length)
-            {
-                GameObject Cthulu = Instantiate(cheat, cheat.transform.position, cheat.transform.rotation);
-                health = 10000;
-            }
+            
 
         //update santé
         string pv = health.ToString();

@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4711382091975814}
   - component: {fileID: 212612158819461396}
   - component: {fileID: 114370223226089164}
-  - component: {fileID: 61886276679899902}
   - component: {fileID: 50649528567869506}
-  m_Layer: 0
+  - component: {fileID: 60949241127139738}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1949424163157710}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -61,10 +61,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &61886276679899902
-BoxCollider2D:
+--- !u!60 &60949241127139738
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -85,9 +85,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.29, y: 2.2}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.25621834, y: 1.1181992}
+      - {x: -0.74520874, y: 0.8210946}
+      - {x: -1.0471941, y: 0.15765026}
+      - {x: -0.79382384, y: -0.8666535}
+      - {x: -1.145, y: -1.1}
+      - {x: 1.145, y: -1.1}
+      - {x: 0.7947718, y: -0.7631579}
+      - {x: 0.9555968, y: -0.18853913}
+      - {x: 0.51003885, y: 0.9140637}
 --- !u!114 &114370223226089164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,10 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64a3df723620524c94ade7d6e1af6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  rotateSpeed: 5
-  backSpeed: 5
-  health: 150
+  rotationForce: 100
+  force: 300
+  health: 2147483647
   projectile: {fileID: 1197065148976312, guid: 67c47c172f59f9640b2bd422beab8a4d, type: 2}
   sante: {fileID: 0}
   cheat: {fileID: 1591816378564390, guid: 6391686dc89baf649a9774db474df8ac, type: 2}
